@@ -1,23 +1,31 @@
-import java.util.TreeSet;
-
 public class Main {
     public static void main(String[] args) {
-        Departement d1 = new Departement(1, "Informatique", 50);
-        Departement d2 = new Departement(2, "Marketing", 30);
-        Departement d3 = new Departement(3, "RH", 10);
+        // Create departments
+        Departement dep1 = new Departement(1, "Informatique", 10);
+        Departement dep2 = new Departement(2, "Ressources Humaines", 5);
 
-        DepartementHashSet departementManager = new DepartementHashSet();
-        departementManager.ajouterDepartement(d1);
-        departementManager.ajouterDepartement(d2);
-        departementManager.ajouterDepartement(d3);
+        // Create employees
+        Employe emp1 = new Employe(101, "Alice");
+        Employe emp2 = new Employe(102, "Bob");
 
-        departementManager.displayDepartement();
+        // Create the AffectationHashMap instance
+        AffectationHashMap affectation = new AffectationHashMap();
 
-        // Recherche d'un département par nom
-        System.out.println(departementManager.rechercherDepartement("Informatique"));
+        // Add employees to departments
+        affectation.ajouterEmployeDepartement(emp1, dep1);
+        affectation.ajouterEmployeDepartement(emp2, dep2);
 
-        // Trier les départements par ID
-        TreeSet<Departement> sortedDepartements = departementManager.trierDepartementById();
-        sortedDepartements.forEach(System.out::println);
+        // Display employees and their departments
+        affectation.afficherEmployesEtDepartements();
+
+        // Try to assign the same employee to two departments
+        affectation.ajouterEmployeDepartement(emp1, dep2); // Should show an error
+
+        // Display employees and departments again
+        affectation.afficherEmployesEtDepartements();
+
+        // Remove an employee
+        affectation.supprimerEmploye(emp1);
+        affectation.afficherEmployesEtDepartements();
     }
 }

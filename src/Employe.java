@@ -1,12 +1,10 @@
-public class Departement {
+public class Employe {
     private int id;
     private String nom;
-    private int nombreEmployes;
 
-    public Departement(int id, String nom, int nombreEmployes) {
+    public Employe(int id, String nom) {
         this.id = id;
         this.nom = nom;
-        this.nombreEmployes = nombreEmployes;
     }
 
     public int getId() {
@@ -17,21 +15,17 @@ public class Departement {
         return nom;
     }
 
-    public int getNombreEmployes() {
-        return nombreEmployes;
-    }
-
     @Override
     public String toString() {
-        return "Département{id=" + id + ", nom='" + nom + "', nombreEmployes=" + nombreEmployes + "}";
+        return "Employé{id=" + id + ", nom='" + nom + "'}";
     }
 
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
-        Departement that = (Departement) obj;
-        return id == that.id && nom.equals(that.nom);
+        Employe employe = (Employe) obj;
+        return id == employe.id;
     }
 
     @Override
